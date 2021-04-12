@@ -13,6 +13,7 @@ public class Ball : MonoBehaviour
 
 	private void ScorePoint()
 	{
+		GameData.score++;
 		//TO DO Scorepoint
 		CheckVictory();
 	}

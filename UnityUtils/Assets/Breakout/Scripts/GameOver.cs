@@ -12,6 +12,8 @@ public class GameOver : MonoBehaviour
 		{
 			over = true;
 			gameOverText.SetActive(true);
+			Debug.Log("Your score is: " + GameData.score);
+			GameData.ResetScore();
 		}
 	}
 
