@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharController2D : MonoBehaviour
 {
-	private Rigidbody2D rigidbody2D;
+	private Rigidbody2D myRigidbody2D;
 
 	#region Movement
 	public float movementSpeed = 2;
@@ -23,7 +23,7 @@ public class CharController2D : MonoBehaviour
 
 	private void Awake()
 	{
-		rigidbody2D = GetComponent<Rigidbody2D>();
+		myRigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 	private void FixedUpdate()
@@ -51,7 +51,7 @@ public class CharController2D : MonoBehaviour
 
 	private void Movement()
 	{
-		rigidbody2D.AddForce(new Vector2(movement * movementSpeed, 0), ForceMode2D.Impulse);
+		myRigidbody2D.AddForce(new Vector2(movement * movementSpeed, 0), ForceMode2D.Impulse);
 	}
 
 	private void Jump()
@@ -60,13 +60,13 @@ public class CharController2D : MonoBehaviour
 
 		if(jumping && Input.GetButton("Jump") && Time.time - startjumpTime < maxJumpTime)
 		{
-			rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+			myRigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
 
 		//Start Jump
 		if (!jumping && Input.GetButtonDown("Jump") && grounded)
 		{
-			rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+			myRigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 			jumping = true;
 			startjumpTime = Time.time;
 		}
