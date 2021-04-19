@@ -24,12 +24,13 @@ public class ReplaceGameObjectByPrefab : EditorWindow
             foreach (GameObject obj in Selection.gameObjects)
             {
                 GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, obj.transform.parent);
+                Undo.RegisterCreatedObjectUndo(go, "Created go");
                 if (!go) return;
                 go.transform.position = obj.transform.position;
                 go.transform.rotation = obj.transform.rotation;
                 go.transform.SetSiblingIndex(obj.transform.GetSiblingIndex());
 
-                DestroyImmediate(obj);
+                Undo.DestroyObjectImmediate(obj);
             }
         }
     }
